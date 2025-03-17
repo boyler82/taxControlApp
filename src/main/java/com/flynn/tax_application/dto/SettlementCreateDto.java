@@ -10,15 +10,11 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SettlementDto {
+public class SettlementCreateDto {
 
-    private int id;
     private SettlementType settlementType;
-    private boolean isDone = false;
-    private String yearMonthStamp;
-    private LocalDateTime doneAt;
     private LocalDateTime untilWhen;
-    private boolean autoExtend = false;
+    private boolean autoExtend;
     private Long taxClientId;
     private String notes;
 }

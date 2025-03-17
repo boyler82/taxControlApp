@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,4 +18,6 @@ public class TaxClientCreateDto {
     private String zipCode;
     private String phoneNumber;
     private String mail;
+    private Long userId;
+    private List<Long> settlementIds;
 }
