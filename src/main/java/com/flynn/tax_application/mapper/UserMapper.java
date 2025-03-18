@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class UserMapper {
 
-    private User mapToUser(UserCreateDto userCreateDto) {
+    public static User mapToUser(UserCreateDto userCreateDto) {
         User user = new User();
         user.setUsername(userCreateDto.getUsername());
         user.setPassword(userCreateDto.getPassword());
@@ -25,7 +25,7 @@ public class UserMapper {
         return user;
     }
 
-    private UserResponseDto mapToUserResponseDto(User user) {
+    public static UserResponseDto mapToUserResponseDto(User user) {
         UserResponseDto userResponseDto = new UserResponseDto();
         userResponseDto.setUsername(user.getUsername());
         userResponseDto.setEmail(user.getEmail());

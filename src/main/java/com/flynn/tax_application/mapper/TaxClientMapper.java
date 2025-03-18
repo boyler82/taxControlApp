@@ -1,6 +1,7 @@
 package com.flynn.tax_application.mapper;
 
 import com.flynn.tax_application.dto.TaxClientCreateDto;
+import com.flynn.tax_application.dto.TaxClientResponseDto;
 import com.flynn.tax_application.model.Settlement;
 import com.flynn.tax_application.model.TaxClient;
 import com.flynn.tax_application.model.User;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class TaxClientMapper {
 
-    public TaxClient mapToTaxClient(TaxClientCreateDto taxClientCreateDto, User user, List<Settlement> settlements) {
+    public static TaxClient mapToTaxClient(TaxClientCreateDto taxClientCreateDto, User user, List<Settlement> settlements) {
         TaxClient taxClient = new TaxClient();
         taxClient.setName(taxClientCreateDto.getName());
         taxClient.setNip(taxClientCreateDto.getNip());
@@ -25,12 +26,13 @@ public class TaxClientMapper {
         return taxClient;
     }
 
-    public TaxClientCreateDto mapToTaxClientCreateDto(TaxClient taxClient) {
+    public static TaxClientResponseDto mapToTaxClientCreateDto(TaxClient taxClient) {
         List<Long> settlementIds = taxClient.getSettlementList() != null ?
                 taxClient.getSettlementList().stream().map(Settlement::getId).collect(Collectors.toList()) :
                 List.of();
 
-        return new TaxClientCreateDto(
+        return new TaxClientResponseDto(
+                taxClient.getId(),
                 taxClient.getName(),
                 taxClient.getNip(),
                 taxClient.getAddress(),

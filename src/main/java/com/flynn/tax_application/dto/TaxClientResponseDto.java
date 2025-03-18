@@ -9,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaxClientResponseDto {
-    private int id;
+    private Long id;
     private String name;
     private String nip;
     private String address;
@@ -18,6 +18,6 @@ public class TaxClientResponseDto {
     private String zipCode;
     private String phoneNumber;
     private String mail;
-    private int userId;
+    private Long userId;
     private List<Long> settlementIds;
 }

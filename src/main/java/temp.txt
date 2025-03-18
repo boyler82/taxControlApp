@@ -1,0 +1,21 @@
+
+    GET     - lista userów (admin) >
+    GET/{id}- pobranie usera >
+    PUT/{id}- aktualizacja >
+    DELETE  - usunięcie >
+
+/api/taxclients
+    POST    - dodanie klienta >
+    GET     - lista klientów użytkownika >
+    GET/{id}- szczegóły klienta >
+    PUT/{id}- aktualizacja >
+    DELETE  - usunięcie klienta >
+
+/api/settlements
+    POST    - dodanie rozliczenia >
+    GET     - lista rozliczeń (filtry, typy, daty) >
+    GET/{id}- szczegóły rozliczenia >
+    PUT/{id}- aktualizacja np. autoExtend, notes >
+    DELETE  - usunięcie >
+    POST/{id}/extend - przedłużenie >
+    POST/{id}/done   - oznacz jako wykonane

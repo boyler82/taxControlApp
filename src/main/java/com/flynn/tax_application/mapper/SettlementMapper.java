@@ -7,7 +7,7 @@ import com.flynn.tax_application.model.TaxClient;
 
 public class SettlementMapper {
 
-    public Settlement mapToSettlement(SettlementCreateDto settlementCreateDto, TaxClient taxClient) {
+    public static Settlement mapToSettlement(SettlementCreateDto settlementCreateDto, TaxClient taxClient) {
         Settlement settlement = new Settlement();
         settlement.setSettlementType(settlementCreateDto.getSettlementType());
         settlement.setUntilWhen(settlementCreateDto.getUntilWhen());
@@ -18,7 +18,7 @@ public class SettlementMapper {
         return settlement;
     }
 
-    public SettlementResponseDto mapToSettlementCreateDto(Settlement settlement) {
+    public static SettlementResponseDto mapToSettlementCreateDto(Settlement settlement) {
         return new SettlementResponseDto(
                 settlement.getId(),
                 settlement.getSettlementType(),
