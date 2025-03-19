@@ -2,6 +2,8 @@ package com.flynn.tax_application.controller;
 
 import com.flynn.tax_application.dto.SettlementCreateDto;
 import com.flynn.tax_application.dto.SettlementResponseDto;
+import com.flynn.tax_application.service.SettlementService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +13,26 @@ import java.util.List;
 @RequestMapping("/api/settlements")
 public class SettlementController {
 
-    @PostMapping
-    public ResponseEntity<SettlementResponseDto> createSettlement(@RequestBody SettlementCreateDto settlementCreateDto) {
-        return ResponseEntity.ok(new SettlementResponseDto());
+
+    private final SettlementService settlementService;
+
+    @Autowired
+    public SettlementController(SettlementService settlementService) {
+        this.settlementService = settlementService;
     }
+
+    // przykładowe endpointy:
+    @PostMapping
+    public ResponseEntity<SettlementResponseDto> createSettlement(@RequestBody SettlementCreateDto dto) {
+        return ResponseEntity.ok(settlementService.createSettlement(dto));
+    }
+
+
+
+//    @PostMapping
+//    public ResponseEntity<SettlementResponseDto> createSettlement(@RequestBody SettlementCreateDto settlementCreateDto) {
+//        return ResponseEntity.ok(new SettlementResponseDto());
+//    }
 
     @GetMapping
     public ResponseEntity<List<SettlementResponseDto>> getAllSettlements() {

@@ -5,13 +5,15 @@ import com.flynn.tax_application.dto.TaxClientResponseDto;
 import com.flynn.tax_application.model.Settlement;
 import com.flynn.tax_application.model.TaxClient;
 import com.flynn.tax_application.model.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class TaxClientMapper {
 
-    public static TaxClient mapToTaxClient(TaxClientCreateDto taxClientCreateDto, User user, List<Settlement> settlements) {
+    public TaxClient mapToTaxClient(TaxClientCreateDto taxClientCreateDto, User user, List<Settlement> settlements) {
         TaxClient taxClient = new TaxClient();
         taxClient.setName(taxClientCreateDto.getName());
         taxClient.setNip(taxClientCreateDto.getNip());
@@ -26,7 +28,7 @@ public class TaxClientMapper {
         return taxClient;
     }
 
-    public static TaxClientResponseDto mapToTaxClientCreateDto(TaxClient taxClient) {
+    public TaxClientResponseDto mapToTaxClientResponseDto(TaxClient taxClient) {
         List<Long> settlementIds = taxClient.getSettlementList() != null ?
                 taxClient.getSettlementList().stream().map(Settlement::getId).collect(Collectors.toList()) :
                 List.of();

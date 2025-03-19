@@ -4,10 +4,12 @@ import com.flynn.tax_application.dto.SettlementCreateDto;
 import com.flynn.tax_application.dto.SettlementResponseDto;
 import com.flynn.tax_application.model.Settlement;
 import com.flynn.tax_application.model.TaxClient;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SettlementMapper {
 
-    public static Settlement mapToSettlement(SettlementCreateDto settlementCreateDto, TaxClient taxClient) {
+    public Settlement mapToSettlement(SettlementCreateDto settlementCreateDto, TaxClient taxClient) {
         Settlement settlement = new Settlement();
         settlement.setSettlementType(settlementCreateDto.getSettlementType());
         settlement.setUntilWhen(settlementCreateDto.getUntilWhen());
@@ -18,7 +20,7 @@ public class SettlementMapper {
         return settlement;
     }
 
-    public static SettlementResponseDto mapToSettlementCreateDto(Settlement settlement) {
+    public SettlementResponseDto mapToSettlementResponseDto(Settlement settlement) {
         return new SettlementResponseDto(
                 settlement.getId(),
                 settlement.getSettlementType(),

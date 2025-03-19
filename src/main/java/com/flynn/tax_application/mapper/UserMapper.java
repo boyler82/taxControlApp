@@ -3,15 +3,17 @@ package com.flynn.tax_application.mapper;
 import com.flynn.tax_application.dto.UserCreateDto;
 import com.flynn.tax_application.dto.UserResponseDto;
 import com.flynn.tax_application.model.User;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class UserMapper {
 
-    public static User mapToUser(UserCreateDto userCreateDto) {
+    public  User mapToUser(UserCreateDto userCreateDto) {
         User user = new User();
         user.setUsername(userCreateDto.getUsername());
         user.setPassword(userCreateDto.getPassword());
@@ -25,8 +27,10 @@ public class UserMapper {
         return user;
     }
 
-    public static UserResponseDto mapToUserResponseDto(User user) {
+    public UserResponseDto mapToUserResponseDto(User user) {
         UserResponseDto userResponseDto = new UserResponseDto();
+
+        userResponseDto.setId(user.getId());
         userResponseDto.setUsername(user.getUsername());
         userResponseDto.setEmail(user.getEmail());
         userResponseDto.setFirstName(user.getFirstName());

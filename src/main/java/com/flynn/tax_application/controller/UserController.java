@@ -4,6 +4,7 @@ import com.flynn.tax_application.dto.UserCreateDto;
 import com.flynn.tax_application.dto.UserResponseDto;
 import com.flynn.tax_application.mapper.UserMapper;
 import com.flynn.tax_application.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +14,13 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
+    @Autowired
+    private UserMapper userMapper;
+
     @PostMapping
     public ResponseEntity<UserResponseDto> createUser(@RequestBody UserCreateDto userCreateDto) {
-        User user = UserMapper.mapToUser(userCreateDto);
-        UserResponseDto responseDto = UserMapper.mapToUserResponseDto(user);
+        User user = userMapper.mapToUser(userCreateDto);
+        UserResponseDto responseDto = userMapper.mapToUserResponseDto(user);
         return ResponseEntity.ok(responseDto);
     }
 
